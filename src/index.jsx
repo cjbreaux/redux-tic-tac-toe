@@ -4,16 +4,23 @@ import App from './components/App'
 import { AppContainer } from 'react-hot-loader'
 import { HashRouter } from 'react-router-dom'
 import './index.css'
+import { createStore } from 'redux'
+import historyReducer from './reducers/history-reducer.js'
+import { Provider } from 'react-redux'
 
+const store = createStore(historyReducer)
 
+let unsubscribe = store.subscribe(() =>
+  console.log(store.getState())
+)
 
 const render = (Component) => {
   ReactDOM.render(
-    <AppContainer>
-      <HashRouter>
+    <HashRouter>
+      <Provider store={store}>
         <Component/>
-      </HashRouter>
-    </AppContainer>,
+      </Provider>
+    </HashRouter>,
     document.getElementById('react-app-root')
   )
 }

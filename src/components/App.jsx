@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Switch, Route, Link } from 'react-router-dom';
-import Game from './Game';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Switch, Route, Link } from 'react-router-dom'
+import Game from './Game'
 
 function App() {
   return(
