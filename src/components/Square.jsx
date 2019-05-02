@@ -1,19 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import historyReducer from './../reducers/history-reducer.js'
-import calculateWinner from './../functions.js';
+import calculateWinner from './../functions.js'
 
 
 
 function Square(props) {
-  let winner = calculateWinner(props.historyReducer.history[0].squares);
+  let winner = calculateWinner(props.historyReducer.squares)
   function updater() {
-    const newSquares = props.historyReducer.history[0].squares;
-    if (props.historyReducer.history[0].squares[props.value] != null) {
-      var newTurn = props.historyReducer.xIsNext;
+    const newSquares = props.historyReducer.squares
+    if (props.historyReducer.squares[props.value] != null) {
+      var newTurn = props.historyReducer.xIsNext
     } else {
-      props.historyReducer.xIsNext ? newSquares[props.value] = 'X' : newSquares[props.value] = 'O';
-      var newTurn = !props.historyReducer.xIsNext;
+      props.historyReducer.xIsNext ? newSquares[props.value] = 'X' : newSquares[props.value] = 'O'
+      var newTurn = !props.historyReducer.xIsNext
     }
 
     const { dispatch } = props
@@ -21,7 +21,7 @@ function Square(props) {
       type: 'SELECT_BOX',
       squares: newSquares,
       xIsNext: newTurn
-    };
+    }
     dispatch(action)
   }
   // console.log(props.historyReducer.history[0].squares[props.value])
@@ -32,7 +32,7 @@ function Square(props) {
       onClick={updater}
       className="square"
       disabled={ winner === null ? false : true}>
-      {props.historyReducer.history[0].squares[props.value]}
+      {props.historyReducer.squares[props.value]}
     </button>
   )
 }

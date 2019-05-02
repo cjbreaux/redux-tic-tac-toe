@@ -1,6 +1,6 @@
-export default (state = {history: [{
-       squares: Array(9).fill(null),
-    }], xIsNext: false}, action) => {
+export default (state = {
+  squares: Array(9).fill(null),
+  xIsNext: false}, action) => {
   switch (action.type) {
   case 'SELECT_BOX':
     const {squares, xIsNext} = action
