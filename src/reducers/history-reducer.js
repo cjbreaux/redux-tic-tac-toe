@@ -1,11 +1,12 @@
 export default (state = {history: [{
        squares: Array(9).fill(null),
-    }],}, action) => {
+    }], xIsNext: false}, action) => {
   switch (action.type) {
   case 'SELECT_BOX':
-    const {history, value, squares} = action
+    const {squares, xIsNext} = action
     let newState = Object.assign({}, state, {
-      squares
+      squares,
+      xIsNext
     })
     return newState
   default:
