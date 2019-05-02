@@ -7,7 +7,6 @@ import calculateWinner from './../functions.js';
 
 function Square(props) {
   let winner = calculateWinner(props.historyReducer.history[0].squares);
-  console.log(winner)
   function updater() {
     const newSquares = props.historyReducer.history[0].squares;
     if (props.historyReducer.history[0].squares[props.value] != null) {

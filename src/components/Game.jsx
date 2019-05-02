@@ -5,7 +5,6 @@ import calculateWinner from './../functions.js'
 import { connect } from 'react-redux'
 
 function Game(props) {
- console.log(props)
  let winner = calculateWinner(props.historyReducer.history[0].squares);
     return (
       <div className="game">
