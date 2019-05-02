@@ -6,11 +6,17 @@ import calculateWinner from './../functions.js';
 
 
 function Square(props) {
-  let winner;
+  let winner = calculateWinner(props.historyReducer.history[0].squares);
+  console.log(winner)
   function updater() {
     const newSquares = props.historyReducer.history[0].squares;
-    const newTurn = !props.historyReducer.xIsNext;
-    props.historyReducer.xIsNext ? newSquares[props.value] = 'X' : newSquares[props.value] = 'O'
+    if (props.historyReducer.history[0].squares[props.value] != null) {
+      var newTurn = props.historyReducer.xIsNext;
+    } else {
+      props.historyReducer.xIsNext ? newSquares[props.value] = 'X' : newSquares[props.value] = 'O';
+      var newTurn = !props.historyReducer.xIsNext;
+    }
+
     const { dispatch } = props
     const action = {
       type: 'SELECT_BOX',
@@ -25,7 +31,8 @@ function Square(props) {
   return (
     <button
       onClick={updater}
-      className="square">
+      className="square"
+      disabled={ winner === null ? false : true}>
       {props.historyReducer.history[0].squares[props.value]}
     </button>
   )
