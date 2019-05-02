@@ -2,19 +2,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 import historyReducer from './../reducers/history-reducer.js'
 
-// let mark;
-// if (props.value === props.historyReducer.selectedBox) {
-//   mark = props.historyReducer.value;
-// }
+
 
 function Square(props) {
-  console.log(props)
   function updater() {
+    const newSquares = props.historyReducer.history[0].squares
+    newSquares[props.value] = 'X'
     const { dispatch } = props
     const action = {
       type: 'SELECT_BOX',
-      selectedBox: props.value,
-      value: 'X'
+      value: props.value,
+      squares: newSquares
     };
     dispatch(action)
   }
@@ -22,7 +20,8 @@ function Square(props) {
     <button
       onClick={updater}
       className="square">
-      {mark}
+
+
 
 
     </button>
